@@ -309,7 +309,7 @@ fun MyDivider(){
 @Composable
 fun MyClickableLoginRegisterText(tryingToLogIn:Boolean, onTextSelected:(String) -> Unit){
 
-    val initialText = if(tryingToLogIn) "Already have an account? " else "Don\'t have an account yet?"
+    val initialText = if(tryingToLogIn) "Already have an account? " else "Don\'t have an account yet? "
     val loginText = if(tryingToLogIn) "Login" else "Register"
 
     val annotatedString = buildAnnotatedString {

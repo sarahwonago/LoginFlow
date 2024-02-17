@@ -27,9 +27,9 @@ fun TermsAndConditionScreen(){
         HeadingTextComponent(value = stringResource(id = R.string.terms_heading))
     }
 
-    SystemBackButtonHandler {
-       PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
-    }
+//    SystemBackButtonHandler {
+//       PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
+//    }
 }
 
 @Preview(showSystemUi = true)
