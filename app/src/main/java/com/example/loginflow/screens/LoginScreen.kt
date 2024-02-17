@@ -33,7 +33,7 @@ fun LoginScreen(){
         modifier = Modifier
             .fillMaxSize()
             .background(WhiteColor)
-            .padding(28.dp)
+            .padding(29.dp)
     ){
         Column (
             modifier = Modifier
