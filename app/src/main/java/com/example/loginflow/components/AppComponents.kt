@@ -1,5 +1,6 @@
 package com.example.loginflow.components
 
+import android.graphics.drawable.Icon
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
@@ -31,16 +33,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -111,7 +116,9 @@ fun MyTextField(
         leadingIcon = {
             Icon(painter = icon, contentDescription = null)
         },
-        keyboardOptions = KeyboardOptions.Default,
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
         value = textValue.value,
         onValueChange = {
             textValue.value = it
@@ -126,6 +133,9 @@ fun MyPasswordTextField(
     labelValue:String,
     icon:Painter
 ) {
+
+    val localFocusManager = LocalFocusManager.current
+
     val password = remember{
         mutableStateOf("")
     }
@@ -168,14 +178,20 @@ fun MyPasswordTextField(
             }
         },
         visualTransformation = if(passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+        singleLine = true,
+        maxLines = 1,
+        keyboardActions = KeyboardActions{
+                                         localFocusManager.clearFocus()
+        },
         value = password.value,
         onValueChange = {
             password.value = it
         }
     )
 }
- */
+*/
+
 @Composable
 fun MyCheckBox(value:String, onTextSelected:(String) -> Unit){
     Row (
@@ -291,10 +307,10 @@ fun MyDivider(){
 }
 
 @Composable
-fun MyClickableLoginText(onTextSelected:(String) -> Unit){
+fun MyClickableLoginRegisterText(tryingToLogIn:Boolean, onTextSelected:(String) -> Unit){
 
-    val initialText = "Already have an account? "
-    val loginText = "Login"
+    val initialText = if(tryingToLogIn) "Already have an account? " else "Don\'t have an account yet?"
+    val loginText = if(tryingToLogIn) "Login" else "Register"
 
     val annotatedString = buildAnnotatedString {
         append(initialText)
@@ -324,4 +340,22 @@ fun MyClickableLoginText(onTextSelected:(String) -> Unit){
             }
         }
     })
+}
+
+@Composable
+fun UnderlinedTextComponent(value:String){
+    Text(
+        text = value,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 40.dp),
+        style = TextStyle(
+            fontSize = 18.sp,
+            fontStyle = FontStyle.Normal,
+            fontWeight = FontWeight.Normal
+        ),
+        color = GrayColor,
+        textAlign = TextAlign.Center,
+        textDecoration = TextDecoration.Underline
+    )
 }

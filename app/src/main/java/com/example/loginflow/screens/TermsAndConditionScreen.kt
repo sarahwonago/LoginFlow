@@ -28,7 +28,7 @@ fun TermsAndConditionScreen(){
     }
 
     SystemBackButtonHandler {
-        PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
+       PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
     }
 }
 

@@ -19,7 +19,7 @@ import com.example.loginflow.R
 import com.example.loginflow.components.HeadingTextComponent
 import com.example.loginflow.components.MyButton
 import com.example.loginflow.components.MyCheckBox
-import com.example.loginflow.components.MyClickableLoginText
+import com.example.loginflow.components.MyClickableLoginRegisterText
 import com.example.loginflow.components.MyDivider
 import com.example.loginflow.components.MyTextField
 import com.example.loginflow.components.NormalTextComponent
@@ -79,8 +79,8 @@ fun SignUpScreen(){
 
             MyDivider()
 
-            MyClickableLoginText(onTextSelected = {
-
+            MyClickableLoginRegisterText(tryingToLogIn = true, onTextSelected = {
+                PostOfficeAppRouter.navigateTo(Screen.LoginScreen)
             })
         }
     }

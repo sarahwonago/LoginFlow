@@ -7,6 +7,8 @@ sealed class Screen(){
 
     object SignUpScreen:Screen()
     object TermsAndConditionScreen:Screen()
+
+    object LoginScreen:Screen()
 }
 
 object PostOfficeAppRouter{
