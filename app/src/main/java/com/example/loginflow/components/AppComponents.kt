@@ -96,7 +96,8 @@ fun HeadingTextComponent(value:String){
 @Composable
 fun MyTextField(
     labelValue:String,
-    icon:Painter
+    icon:Painter,
+    onTextSelected: (String) -> Unit
 ) {
     val textValue = remember{
         mutableStateOf("")
@@ -122,6 +123,7 @@ fun MyTextField(
         value = textValue.value,
         onValueChange = {
             textValue.value = it
+            onTextSelected(it)
         }
     )
 }

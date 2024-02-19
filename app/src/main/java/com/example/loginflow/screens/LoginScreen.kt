@@ -46,10 +46,16 @@ fun LoginScreen(){
             Spacer(modifier = Modifier.height(20.dp))
 
             MyTextField(labelValue = stringResource(id = R.string.email),
-                icon = painterResource(id = R.drawable.email))
+                icon = painterResource(id = R.drawable.email),
+                onTextSelected = {
+
+                })
 
             MyTextField(labelValue = stringResource(id = R.string.password),
-                icon = painterResource(id = R.drawable.password))
+                icon = painterResource(id = R.drawable.password),
+                onTextSelected = {
+
+                })
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -68,9 +74,12 @@ fun LoginScreen(){
         }
     }
 
+    /*
    SystemBackButtonHandler {
         PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
    }
+
+     */
 }
 
 @Composable

@@ -15,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.loginflow.R
 import com.example.loginflow.components.HeadingTextComponent
 import com.example.loginflow.components.MyButton
@@ -23,12 +24,14 @@ import com.example.loginflow.components.MyClickableLoginRegisterText
 import com.example.loginflow.components.MyDivider
 import com.example.loginflow.components.MyTextField
 import com.example.loginflow.components.NormalTextComponent
+import com.example.loginflow.data.LoginViewModel
+import com.example.loginflow.data.UIEvent
 import com.example.loginflow.navigation.PostOfficeAppRouter
 import com.example.loginflow.navigation.Screen
 import com.example.loginflow.ui.theme.WhiteColor
 
 @Composable
-fun SignUpScreen(){
+fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()){
 
     Surface(
         modifier = Modifier
@@ -49,21 +52,37 @@ fun SignUpScreen(){
             Spacer(modifier = Modifier.height(20.dp))
             MyTextField(
                 labelValue = stringResource(id = R.string.first_name),
-                icon = painterResource(id = R.drawable.profile)
+                icon = painterResource(id = R.drawable.profile),
+                onTextSelected = {
+
+                    loginViewModel.onEvent(UIEvent.FirstNameChanged(it))
+                }
             )
             MyTextField(
                 labelValue = stringResource(id = R.string.last_name),
-                icon = painterResource(id = R.drawable.profile)
+                icon = painterResource(id = R.drawable.profile),
+                onTextSelected = {
+
+                    loginViewModel.onEvent(UIEvent.LastNameChanged(it))
+                }
             )
 
             MyTextField(
                 labelValue = stringResource(id = R.string.email),
-                icon = painterResource(id = R.drawable.email)
+                icon = painterResource(id = R.drawable.email),
+                onTextSelected = {
+
+                    loginViewModel.onEvent(UIEvent.EmailChanged(it))
+                }
             )
 
             MyTextField(
                 labelValue = stringResource(id = R.string.password),
-                icon = painterResource(id = R.drawable.password)
+                icon = painterResource(id = R.drawable.password),
+                onTextSelected = {
+
+                    loginViewModel.onEvent(UIEvent.PasswordChanged(it))
+                }
             )
 
             MyCheckBox(value = stringResource(id = R.string.terms_and_conditions)
