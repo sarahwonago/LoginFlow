@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,10 +28,19 @@ fun TermsAndConditionScreen(){
         HeadingTextComponent(value = stringResource(id = R.string.terms_heading))
     }
 
-//    SystemBackButtonHandler {
-//       PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
-//    }
+
+  SystemBackButtonHandler {
+       try {
+           PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
+       } catch (e: Exception) {
+            // Handle the exception if needed
+       }
+   }
+
+
 }
+
+
 
 @Preview(showSystemUi = true)
 @Composable

@@ -68,9 +68,9 @@ fun LoginScreen(){
         }
     }
 
-//    SystemBackButtonHandler {
-//        PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
-//    }
+   SystemBackButtonHandler {
+        PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
+   }
 }
 
 @Composable

@@ -1,6 +1,5 @@
 package com.example.loginflow.components
 
-import android.graphics.drawable.Icon
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -57,6 +56,7 @@ import com.example.loginflow.ui.theme.Secondary
 import com.example.loginflow.ui.theme.TextColor
 import com.example.loginflow.ui.theme.WhiteColor
 import com.example.loginflow.ui.theme.componentShapes
+
 
 @Composable
 fun NormalTextComponent(value:String){
@@ -190,7 +190,7 @@ fun MyPasswordTextField(
         }
     )
 }
-*/
+ */
 
 @Composable
 fun MyCheckBox(value:String, onTextSelected:(String) -> Unit){
