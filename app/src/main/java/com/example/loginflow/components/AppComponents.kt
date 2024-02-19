@@ -247,9 +247,11 @@ fun MyClickableText(value:String, onTextSelected:(String) -> Unit){
 }
 
 @Composable
-fun MyButton(value: String){
+fun MyButton(value: String, onButtonCLicked : () -> Unit){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {
+                  onButtonCLicked.invoke()
+                  },
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(48.dp),

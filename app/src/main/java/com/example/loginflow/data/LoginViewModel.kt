@@ -37,7 +37,16 @@ class LoginViewModel:ViewModel(){
                 )
                 printState()
             }
+
+            is UIEvent.RegisterButtonClicked -> {
+                signUp()
+            }
         }
+    }
+
+    private fun signUp() {
+        Log.d(TAG,"Inside_signup")
+        printState()
     }
 
     private fun printState(){

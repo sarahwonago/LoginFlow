@@ -63,7 +63,10 @@ fun LoginScreen(){
 
             Spacer(modifier = Modifier.height(50.dp))
 
-            MyButton(value = stringResource(id = R.string.login))
+            MyButton(value = stringResource(id = R.string.login),
+                onButtonCLicked = {
+
+                })
 
             Spacer(modifier = Modifier.height(30.dp))
             MyDivider()
