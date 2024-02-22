@@ -56,7 +56,8 @@ fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()){
                 onTextSelected = {
 
                     loginViewModel.onEvent(UIEvent.FirstNameChanged(it))
-                }
+                },
+                errorStatus = loginViewModel.registrationUIState.value.firstNameError
             )
             MyTextField(
                 labelValue = stringResource(id = R.string.last_name),
@@ -64,7 +65,8 @@ fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()){
                 onTextSelected = {
 
                     loginViewModel.onEvent(UIEvent.LastNameChanged(it))
-                }
+                },
+                errorStatus = loginViewModel.registrationUIState.value.lastNameError
             )
 
             MyTextField(
@@ -73,7 +75,8 @@ fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()){
                 onTextSelected = {
 
                     loginViewModel.onEvent(UIEvent.EmailChanged(it))
-                }
+                },
+                errorStatus = loginViewModel.registrationUIState.value.emailError
             )
 
             MyTextField(
@@ -82,7 +85,8 @@ fun SignUpScreen(loginViewModel: LoginViewModel = viewModel()){
                 onTextSelected = {
 
                     loginViewModel.onEvent(UIEvent.PasswordChanged(it))
-                }
+                },
+                errorStatus = loginViewModel.registrationUIState.value.passwordError
             )
 
             MyCheckBox(value = stringResource(id = R.string.terms_and_conditions)

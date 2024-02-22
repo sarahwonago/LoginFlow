@@ -97,7 +97,8 @@ fun HeadingTextComponent(value:String){
 fun MyTextField(
     labelValue:String,
     icon:Painter,
-    onTextSelected: (String) -> Unit
+    onTextSelected: (String) -> Unit,
+    errorStatus:Boolean = false
 ) {
     val textValue = remember{
         mutableStateOf("")
@@ -124,7 +125,8 @@ fun MyTextField(
         onValueChange = {
             textValue.value = it
             onTextSelected(it)
-        }
+        },
+        isError = !errorStatus
     )
 }
 
